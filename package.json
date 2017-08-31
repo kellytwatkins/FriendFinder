@@ -1,0 +1,30 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "Homework 13",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellytwatkins/FriendFinder.git"
+  },
+  "keywords": [
+    "express",
+    "body-parser"
+  ],
+  "author": "Kelly Watkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kellytwatkins/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/kellytwatkins/FriendFinder#readme"
+}
