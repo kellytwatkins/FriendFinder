@@ -5,6 +5,7 @@
 // ===============================================================================
 
 var friends = require("../data/friends");
+var totalDifference = 0;
 
 // ===============================================================================
 // ROUTING
@@ -32,8 +33,40 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
-      friends.push(req.body);
-      res.json(true);
+      var match = {
+        name: "",
+        image: "",
+        matchDifference: 1000
+      };
+      var userData = req.body;
+      var userName = userData.name;
+      var userImage = userData.image;
+      var userScores = userData.scores;
+      var totalDifference = 0;
+
+      for(var i = 0; i < friends.length-1; i++) {
+        console.log(friends[i].name);
+        totalDifference = 0;
+
+        // loop thru friends and users scores to calculate the absolute difference and push the result to the match variable
+        for(var j = 0; j < 10; j++) {
+            // calculates the difference
+            totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
+            // if overall difference is less than current greatMatch
+            if (totalDifference <= match.matchDifference) {
+                // reset match
+                match.name = friends[i].name;
+                match.photo = friends[i].photo;
+                match.matchDifference = totalDifference;
+            if (j == 9) {
+            console.log(friends[i].name + " difference is:" + totalDifference)
+            }
+            }
+        }
+    }
+
+      friends.push(userData);
+      res.json(match);
   });
 
   // ---------------------------------------------------------------------------
